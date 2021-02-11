@@ -98,6 +98,7 @@
                                 <th>Title</th>
                                 <th>Location</th>
                                 <th>Price</th>
+                                <th>Quantity</th>
                               </tr>
                             </thead>
                             
@@ -106,6 +107,7 @@
                                 <td >{{lesson.title}}</td>
                                 <td>{{lesson.location}}</td>
                                 <td>${{lesson.price}}</td>
+                                <td>{{lesson.quantity}}</td>
                                 <td><button class="btn btn-primary" v-on:click="removeLesson(lesson)"><span class="fas fa-trash-alt"> Remove</span> </button>
                                 </td>
                               </tr>
@@ -197,18 +199,29 @@
                     )
                 },
             methods: {
-                addToCart(lesson) {
-                    // this.dbCart.push(lesson);
-                    this.cart.push(lesson);
-                    lesson.spaces-1;
-                    lesson.quantity++;
+                // addToCart(lesson) {
+                //     // this.dbCart.push(lesson);
+                //     this.cart.push(lesson);
+                //     lesson.spaces-1;
+                //     lesson.quantity++;
 
-                    for(lessonObject of this.lessons){
-                        if(lesson.id==lessonObject.id){
-                            lessonObject.spaces--;
+                //     for(lessonObject of this.lessons){
+                //         if(lesson.id==lessonObject.id){
+                //             lessonObject.spaces--;
+                //         }
+                //     }
+                // }, 
+                addToCart(lesson){
+                        if(this.cart.includes(lesson)){
+                            lesson.spaces--;
+                            lesson.quantity++;
                         }
-                    }
-                }, 
+                        else{
+                            this.cart.push(lesson);
+                            lesson.spaces--;
+                            lesson.quantity++;
+                        }
+                    },
 
                 showCheckout() {
                     console.log(this.showLesson);
