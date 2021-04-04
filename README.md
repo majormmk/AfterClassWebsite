@@ -1,3 +1,4 @@
-# CW2-CST3145-2
+# After Class Vue.Js Website
 
-Public afterclass website
+Creating an after class website where user can buy classes to learn.
+The webpage was hosted on heroku.
